@@ -1,0 +1,13 @@
+.hide {
+    display: none;
+    visibility: hidden;
+}
+
+.show{
+    display: block;
+    visibility: visible;
+}
+
+.completed{
+    background-color: gray;
+}

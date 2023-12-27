@@ -5,11 +5,11 @@ import Board from "./Board";
 const Welcome=()=>{
     const tempQuestions={easy:["something"] ,tough:["Tsome"],impossible:["Isome"],special:["alot"]};
     const [questions, setQuestions]=useState(tempQuestions);
-    let test=false;
+    const [hostReady,setHostReady]=useState(false);
     const handleSubmission=()=>{
-        test=!test;
+        setHostReady(true);
     }
-    if(test){
+    if(hostReady){
         return(
             <Board questions={questions}/>
         )
