@@ -5,15 +5,15 @@ import "./Question.css";
 //current solution is a bit jank
 const Question=({song})=>{
     const [isCompleted,setIsCompleted]=useState(false);
-    let questionInfo="hide";
-    let questionPreview="show";
+    const [style,setStyle]=useState(["show","hide"]);
     const changeStyle=()=>{
-        if(questionInfo=="show"){
+        if(style[1]=="show"){
+            console.log("here");
             setIsCompleted(true);
         }
         else{
-            questionPreview="hide";
-            questionInfo="show";
+            console.log("first");
+            setStyle(["hide","show"]);
         }
     }
     if(isCompleted){
@@ -26,10 +26,11 @@ const Question=({song})=>{
     else{
         return(
             <div>
-                <div className={questionPreview} onClick={changeStyle}>
+                <div className={style[0]} onClick={changeStyle}>
                     Question #
                 </div>
-                <div className={questionInfo}>
+                <div className={style[1]}>
+                    <h1>This is here to see if it is working</h1>
                     <p>{song}</p>
                     <button onClick={changeStyle}>Back to Board</button>
                 </div>
