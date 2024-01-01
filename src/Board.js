@@ -2,16 +2,19 @@
 // Now that I am addding context logic, all of these questions will need to be buttons that onClick will link to that question and in questions it will take params and load the question
 import React, {useContext} from "react";
 import {Link} from "react-router-dom";
-import Question from "./Question";
 import questionContext from "./questionContext";
 const Board =()=>{
     const {easy,tough,impossible,special}=useContext(questionContext);
+    const sendUser=(difficulty,id)=>{
+        const newId=parseInt(id);
+        <Link to={`/question/${newId}`}/>
+    }
     return(
         <div>
-            {easy.map(song=><Question song={song} />)}
-            {tough.map(song=><Question song={song} />)}
-            {impossible.map(song=><Question song={song} />)}
-            {special.map(song=><Question song={song} />)}
+            {easy.map(song=><button onClick={()=>sendUser("easy",song[0])}/>)}
+            {tough.map(song=><button onClick={()=>sendUser("tough",song[0])}/>)}
+            {impossible.map(song=><button onClick={()=>sendUser("impossible",song[0])}/>)}
+            {special.map(song=><button onClick={()=>sendUser("special",song[0])}/>)}
         </div>
     )
 }

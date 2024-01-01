@@ -3,7 +3,7 @@ import Board from "./Board";
 //Preliminary logic will be here. Like type  of quiz and grabbing questions
 //The button will eventually turn in form data
 const Welcome=({setQuestions})=>{
-    const tempQuestions={easy:["something"] ,tough:["Tsome"],impossible:["Isome"],special:["alot"]};
+    const tempQuestions={easy:["0","something"] ,tough:["0","Tsome"],impossible:["0","Isome"],special:["0","alot"]};
     const [hostReady,setHostReady]=useState(false);
     const handleSubmission=()=>{
         setQuestions(tempQuestions);

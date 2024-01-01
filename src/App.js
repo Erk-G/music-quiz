@@ -14,7 +14,7 @@ function App() {
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<Welcome setQuestions={setQuestionDict}/>}/>
-        <Route path="/question/:number" element={<Question/>}/>
+        <Route path="/question/:difficulty/:id" element={<Question/>}/>
         <Route path="*" element={<Navigate to="/"/>}/>
       </Routes>
       </BrowserRouter>
