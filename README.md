@@ -41,6 +41,6 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 
 ## Notes and Current Goals
 
-With this update the front end is pretty much done. On the code side Question.js and by exctension Board.js isn't really built to dewal with what actual questions will contain so they will both be changed a bit once I have a concrete example. useEffect is leftover as when I have the db set up I will need it to call an API. Need the buttons to be unclickable after clicked but this will happen later as I don't think it is super important. Player's and player score will also need to be added to questions and board. Lastly the CSS, the game looks pretty barren.
+With this update the front end is pretty much done.  useEffect is leftover as when I have the db set up I will need it to call an API. Need the buttons to be unclickable after clicked but this will happen later as I don't think it is super important.  Lastly the CSS, the game looks pretty barren.
 
 My next steps are adding in Player score, creating a psql db, an api to interact with the db and maybe a helper api for the front end.
