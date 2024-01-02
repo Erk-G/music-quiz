@@ -2,7 +2,7 @@
 // This is closer to what the end result of Board will be. It will go through one more revision once a db is set up
 import React, {useContext} from "react";
 import {useNavigate} from "react-router-dom";
-import questionContext from "./questionContext";
+import questionContext from "./helper/questionContext";
 const Board =()=>{
     const navigate=useNavigate();
     const {easy,tough,impossible,special}=useContext(questionContext);
