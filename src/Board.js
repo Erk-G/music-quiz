@@ -12,10 +12,10 @@ const Board =()=>{
     }
     return(
         <div>
-            {easy.map(song=><button onClick={()=>sendUser("easy",song[0])}>Easy</button>)}
-            {tough.map(song=><button onClick={()=>sendUser("tough",song[0])}>Tough</button>)}
-            {impossible.map(song=><button onClick={()=>sendUser("impossible",song[0])}>Impossible</button>)}
-            {special.map(song=><button onClick={()=>sendUser("special",song[0])}>Special</button>)}
+            {easy.map(song=><button onClick={()=>sendUser("easy",song.id)}>Easy</button>)}
+            {tough.map(song=><button onClick={()=>sendUser("tough",song.id)}>Tough</button>)}
+            {impossible.map(song=><button onClick={()=>sendUser("impossible",song.id)}>Impossible</button>)}
+            {special.map(song=><button onClick={()=>sendUser("special",song.id)}>Special</button>)}
         </div>
     )
 }
