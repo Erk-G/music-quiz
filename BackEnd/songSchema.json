@@ -6,7 +6,9 @@
     "title": "Root Schema",
     "required": [
         "difficulty",
-        "name",
+        "genre",
+        "song_title",
+        "song_origin",
         "url"
     ],
     "properties": {
@@ -18,12 +20,28 @@
                 "easy"
             ]
         },
-        "name": {
+        "genre": {
             "type": "string",
             "default": "",
-            "title": "The name Schema",
+            "title": "The genre Schema",
+            "examples": [
+                "videogame"
+            ]
+        },
+        "song_title": {
+            "type": "string",
+            "default": "",
+            "title": "The song_title Schema",
             "examples": [
                 "Sanctuary"
+            ]
+        },
+        "song_origin": {
+            "type": "string",
+            "default": "",
+            "title": "The song_origin Schema",
+            "examples": [
+                "Kingdom Hearts 2"
             ]
         },
         "url": {
@@ -37,7 +55,9 @@
     },
     "examples": [{
         "difficulty": "easy",
-        "name": "Sanctuary",
+        "genre": "videogame",
+        "song_title": "Sanctuary",
+        "song_origin": "Kingdom Hearts 2",
         "url": "HTUq3Ik1GHM"
     }]
 }

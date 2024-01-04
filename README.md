@@ -44,3 +44,5 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 With this update the front end is pretty much done.  useEffect is leftover as when I have the db set up I will need it to call an API. Need the buttons to be unclickable after clicked but this will happen later as I don't think it is super important.  Lastly the CSS, the game looks pretty barren.
 
 My next steps are adding in Player score, creating a psql db, an api to interact with the db and maybe a helper api for the front end.
+
+Creating the schema for my database I wonder if it would be better to have a seperate table for genres.
