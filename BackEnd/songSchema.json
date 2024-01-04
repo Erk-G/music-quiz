@@ -5,13 +5,21 @@
     "default": {},
     "title": "Root Schema",
     "required": [
+        "url",
         "difficulty",
         "genre",
         "song_title",
-        "song_origin",
-        "url"
+        "song_origin"
     ],
     "properties": {
+        "url": {
+            "type": "string",
+            "default": "",
+            "title": "The url Schema",
+            "examples": [
+                "HTUq3Ik1GHM"
+            ]
+        },
         "difficulty": {
             "type": "string",
             "default": "",
@@ -43,21 +51,13 @@
             "examples": [
                 "Kingdom Hearts 2"
             ]
-        },
-        "url": {
-            "type": "string",
-            "default": "",
-            "title": "The url Schema",
-            "examples": [
-                "HTUq3Ik1GHM"
-            ]
         }
     },
     "examples": [{
+        "url": "HTUq3Ik1GHM",
         "difficulty": "easy",
         "genre": "videogame",
         "song_title": "Sanctuary",
-        "song_origin": "Kingdom Hearts 2",
-        "url": "HTUq3Ik1GHM"
+        "song_origin": "Kingdom Hearts 2"
     }]
 }
