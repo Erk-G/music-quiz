@@ -39,12 +39,16 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Notes and Current Goals
+## Notes
 
-With this update the front end is pretty much done.  useEffect is leftover as when I have the db set up I will need it to call an API. Need the buttons to be unclickable after clicked but this will happen later as I don't think it is super important.  Lastly the CSS, the game looks pretty barren.
+useEffect is leftover as when I have the db set up I will need it to call an API. Need the buttons to be unclickable after clicked but this will happen later as I don't think it is super important.  Lastly the CSS, the game looks pretty barren.
 
-My next steps are adding in Player score, creating a psql db, an api to interact with the db and maybe a helper api for the front end.
+Update: model and routes are all set up. When I worked with express routing for databases before I liked to set them up fully and then start testing them. They're straightforward to set up but I'm not sure how efficient it is to do this.
 
 Creating the schema for my database I wonder if it would be better to have a seperate table for genres.
 
 Decided to make url the PRIMARY KEY for songs since it is the only piece of information that I know shouldn't ever be repeated twice. It's difficult to do that for data like song_title because some songs have longer titles or in different languages or maybe it's just spelled wrong. Caveat is there is multiple youtube videos of the same song but this is the best I can do. I also made it a PRIMARY KEY because I realize I don't have a need for a numerical id since my current plan is to grab an array of songs from genre and difficulty and Math.rand choose from that array.
+
+## Current Goals
+
+My next steps are creating tests for the db, creating a helper api for the front end, and tying the back and front end together.
