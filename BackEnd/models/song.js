@@ -55,3 +55,5 @@ class Song{
         return songRes.rows[0];
     }
 }
+
+module.exports=Song;
