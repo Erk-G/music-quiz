@@ -1,4 +1,5 @@
 import './App.css';
+import axios from "axios";
 import React, {useEffect,useState} from "react";
 import { BrowserRouter,Routes,Route, Navigate } from 'react-router-dom';
 import questionContext from "./helper/questionContext";
@@ -12,6 +13,19 @@ import Players from "./Players";
 function App() {
   const [questionDict,setQuestionDict]=useState({});
   const [playerList,setPlayerList]=useState([]);
+  const getQuestions=async (genre,num_questions,special)=>{
+    const base_url=`http://localhost:3001/songs/${genre}`;
+    let easy= await axios.get(base_url+"/easy");
+    let tough= await axios.get(base_url+"/tough");
+    let impossible= await axios.get(base_url+"/impossible");
+    let newQuestions=[easy,tough,impossible];
+    if(special){
+      let special= await axios.get(base_url+"/special");
+      newQuestions.push(special);
+    }
+    setQuestionDict(newQuestions);
+
+  }
   const setPlayerAmount=(num)=>{
     let newPlayerList=[];
     for(let i=0;i<num;i++){
@@ -24,7 +38,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Welcome setQuestions={setQuestionDict} setPlayerAmount={setPlayerAmount}/>}/>
+        <Route path="/" element={<Welcome setQuestions={getQuestions} setPlayerAmount={setPlayerAmount}/>}/>
         <Route path="/board" element={<Board/>}/>
         <Route path="/question/easy/:id" element={<Question difficulty={questionDict.easy}/>}/>
         <Route path="/question/tough/:id" element={<Question difficulty={questionDict.tough}/>}/>
