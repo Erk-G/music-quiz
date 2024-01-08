@@ -49,6 +49,8 @@ Creating the schema for my database I wonder if it would be better to have a sep
 
 Decided to make url the PRIMARY KEY for songs since it is the only piece of information that I know shouldn't ever be repeated twice. It's difficult to do that for data like song_title because some songs have longer titles or in different languages or maybe it's just spelled wrong. Caveat is there is multiple youtube videos of the same song but this is the best I can do. I also made it a PRIMARY KEY because I realize I don't have a need for a numerical id since my current plan is to grab an array of songs from genre and difficulty and Math.rand choose from that array.
 
+An optimization I would make in the future is that since I am always going to have the three base difficulties I should make a Route that organizes everything in an array. I remember there is a way I can just get seperate rows of a condition but I may just go with having the host be able to customize their difficulty instead.
+
 ## Current Goals
 
-My next steps are creating tests for the db, creating a helper api for the front end, and tying the back and front end together.
+Next step is to make sure the program can run and grab questions from the db. Once working correctly, I will refine Question.js as it is filled with placeholders.
