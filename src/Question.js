@@ -7,24 +7,45 @@ import YouTube from "react-youtube";
 //current solution is a bit jank
 const Question=({difficulty})=>{
     const navigate=useNavigate();
-    const {id}=useParams();
+    const {id,diff_name}=useParams();
     const newId=parseInt(id);
     const question=difficulty[newId];
     const handleSubmit=()=>{
         navigate("/board");
     }
-    const opts = {
-        height: '50',
-        width: '80',
-      };
+    console.log(question);
+    let target;
+    // if(difficulty=="special"){
+    //     target=""
+    // }
+    let opts;
+    if(diff_name=="easy"){
+        opts = {
+            height: '50',
+            width: '80',
+            playerVars:{
+                autoplay:1,
+                end:6,
+            },
+          };
+    }
+    else{
+        opts = {
+            height: '50',
+            width: '80',
+            playerVars:{
+                autoplay:1,
+            },
+          };
+    }
 
     return(
         <div>
-            <div >
-                Question #
+            <div>
+                <h1>{target}</h1>
             </div>
             <div>
-                <h1>This is here to see if it is working</h1>
+                <h1>Question # {id}</h1>
                 <YouTube videoId={question.url} opts={opts}/>
                 <button onClick={handleSubmit}>Back to Board</button>
             </div>

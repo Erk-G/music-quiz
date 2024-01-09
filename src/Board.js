@@ -7,20 +7,28 @@ const Board =()=>{
     const navigate=useNavigate();
     const {easy,tough,impossible,special}=useContext(questionContext);
     const sendUser=(difficulty,id)=>{
-        console.log("hello ," , difficulty,id);
+        // console.log("hello ," , difficulty,id);
         navigate(`/question/${difficulty}/${id}`)
-
     }
-    console.log(easy);
-    
-    // {tough.map(song=><button onClick={()=>sendUser("tough",song.id)}>Tough</button>)}
-    // {impossible.map(song=><button onClick={()=>sendUser("impossible",song.id)}>Impossible</button>)}
-    // {special.map(song=><button onClick={()=>sendUser("special",song.id)}>Special</button>)}
-    return(
-        <div>
-            {easy.map(song=><button onClick={()=>sendUser("easy",song.id)}>Easy</button>)}
-        </div>
-    )
+    if(special.keys().length){
+        return(
+            <div>
+                {easy.map(song=><button onClick={()=>sendUser("easy",song.id)}>Easy</button>)}
+                {tough.map(song=><button onClick={()=>sendUser("tough",song.id)}>Tough</button>)}
+                {impossible.map(song=><button onClick={()=>sendUser("impossible",song.id)}>Impossible</button>)}
+                {special.map(song=><button onClick={()=>sendUser("special",song.id)}>Special</button>)}
+            </div>
+        )
+    }
+    else{
+        return(
+            <div>
+                {easy.map(song=><button onClick={()=>sendUser("easy",song.id)}>Easy</button>)}
+                {tough.map(song=><button onClick={()=>sendUser("tough",song.id)}>Tough</button>)}
+                {impossible.map(song=><button onClick={()=>sendUser("impossible",song.id)}>Impossible</button>)}
+            </div>
+        )
+    }
 }
 
 export default Board;

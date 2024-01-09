@@ -31,18 +31,20 @@ function App() {
   const getQuestions=async (genre,num_questions,special)=>{
     const base_url=`http://localhost:3001/songs/${genre}`;
     let easy= await axios.get(base_url+"/easy");
-    // let tough= await axios.get(base_url+"/tough");
-    // let impossible= await axios.get(base_url+"/impossible");
+    let tough= await axios.get(base_url+"/tough");
+    let impossible= await axios.get(base_url+"/impossible");
     easy=uniqueQuestions(num_questions,easy.data.songs);
-    // tough=uniqueQuestions(num_questions,tough.data.songs);
-    // impossible=uniqueQuestions(num_questions,impossible.data.songs);
-    // let newQuestions=[easy,tough,impossible];
-    let newQuestions={easy:easy};
-    // if(special){
-    //   let special= await axios.get(base_url+"/special");
-    //   special=uniqueQuestions(num_questions,special.data.songs);
-    //   newQuestions.push(special);
-    // }
+    tough=uniqueQuestions(num_questions,tough.data.songs);
+    impossible=uniqueQuestions(num_questions,impossible.data.songs);
+    let newQuestions;
+    if(special){
+      let special= await axios.get(base_url+"/special");
+      special=uniqueQuestions(num_questions,special.data.songs);
+      newQuestions={easy:easy,tough:tough,impossible:impossible,special:special};
+    }
+    else{
+      newQuestions={easy:easy,tough:tough,impossible:impossible};
+    }
     setQuestionDict(newQuestions);
 
   }
