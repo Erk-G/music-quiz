@@ -47,7 +47,7 @@ const Welcome=({getQuestions,setPlayerAmount})=>{
                     <input type="radio" id="twoP" name="player_amount" value={2}/>
                     <label for="twoP"> 2 </label> <br/>
                     <input type="radio" id="threeP" name="player_amount" value={3}/>
-                    <label for="threeP"> </label> <br/>
+                    <label for="threeP"> 3 </label> <br/>
                 <p>Player targeted questions?</p>
                     <input type="radio" id="yes" name="special" value={true}/>
                     <label for="yes"> Yes </label> <br/>

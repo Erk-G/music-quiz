@@ -13,14 +13,33 @@ import Players from "./Players";
 function App() {
   const [questionDict,setQuestionDict]=useState({});
   const [playerList,setPlayerList]=useState([]);
+  //num is always 3,4,or 5. maxVal is length of shortest array
+  const uniqueQuestions=(num,arr)=>{
+    let numbers=[];
+    let newQuestions=[];
+    let number;
+    while(numbers.length<num){
+      number=Math.floor(Math.random()*arr.length);
+      if(!numbers.includes(number)){
+        numbers.push(number);
+        newQuestions.push(arr[number]);
+      }
+    }
+    return newQuestions;
+  }
   const getQuestions=async (genre,num_questions,special)=>{
+    console.log(genre);
     const base_url=`http://localhost:3001/songs/${genre}`;
     let easy= await axios.get(base_url+"/easy");
     let tough= await axios.get(base_url+"/tough");
     let impossible= await axios.get(base_url+"/impossible");
+    easy=uniqueQuestions(num_questions,easy);
+    tough=uniqueQuestions(num_questions,tough);
+    impossible=uniqueQuestions(num_questions,impossible);
     let newQuestions=[easy,tough,impossible];
     if(special){
       let special= await axios.get(base_url+"/special");
+      special=uniqueQuestions(num_questions,special);
       newQuestions.push(special);
     }
     setQuestionDict(newQuestions);
@@ -38,7 +57,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Welcome setQuestions={getQuestions} setPlayerAmount={setPlayerAmount}/>}/>
+        <Route path="/" element={<Welcome getQuestions={getQuestions} setPlayerAmount={setPlayerAmount}/>}/>
         <Route path="/board" element={<Board/>}/>
         <Route path="/question/easy/:id" element={<Question difficulty={questionDict.easy}/>}/>
         <Route path="/question/tough/:id" element={<Question difficulty={questionDict.tough}/>}/>
