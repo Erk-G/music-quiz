@@ -30,29 +30,29 @@ const Welcome=({getQuestions,setPlayerAmount})=>{
             <h1>Music Quiz!</h1>
             <form onSubmit={handleSubmission}>
                 <p>Song Genre</p>
-                    <input type="radio" id="videogame" name="genre" value="videogame" checked="checked"/>
-                    <label for="videogame"> Videogame Music </label> <br/>
+                    <input type="radio" id="videogame" name="genre" value="videogame" defaultChecked="checked"/>
+                    <label htmlFor="videogame"> Videogame Music </label> <br/>
                     <input type="radio" id="anime" name="genre" value="anime"/>
-                    <label for="anime"> Anime Music </label> <br/>
+                    <label htmlFor="anime"> Anime Music </label> <br/>
                 <p>Questions per difficulty</p>
-                    <input type="radio" id="three" name="question_amount" value={3} checked="checked"/>
-                    <label for="three"> 3 </label> <br/>
+                    <input type="radio" id="three" name="question_amount" value={3} defaultChecked="checked"/>
+                    <label htmlFor="three"> 3 </label> <br/>
                     <input type="radio" id="four" name="question_amount" value={4}/>
-                    <label for="four"> 4 </label> <br/>
+                    <label htmlFor="four"> 4 </label> <br/>
                     <input type="radio" id="five" name="question_amount" value={5}/>
-                    <label for="five"> 5 </label> <br/>
+                    <label htmlFor="five"> 5 </label> <br/>
                 <p>Number of players</p>
-                    <input type="radio" id="oneP" name="player_amount" value={1} checked="checked"/>
-                    <label for="oneP"> 1 </label> <br/>
+                    <input type="radio" id="oneP" name="player_amount" value={1} defaultChecked="checked"/>
+                    <label htmlFor="oneP"> 1 </label> <br/>
                     <input type="radio" id="twoP" name="player_amount" value={2}/>
-                    <label for="twoP"> 2 </label> <br/>
+                    <label htmlFor="twoP"> 2 </label> <br/>
                     <input type="radio" id="threeP" name="player_amount" value={3}/>
-                    <label for="threeP"> 3 </label> <br/>
+                    <label htmlFor="threeP"> 3 </label> <br/>
                 <p>Player targeted questions?</p>
                     <input type="radio" id="yes" name="special" value={true}/>
-                    <label for="yes"> Yes </label> <br/>
-                    <input type="radio" id="no" name="special" value={false} checked="checked"/>
-                    <label for="no"> No </label> <br/>
+                    <label htmlFor="yes"> Yes </label> <br/>
+                    <input type="radio" id="no" name="special" value={false} defaultChecked="checked"/>
+                    <label htmlFor="no"> No </label> <br/>
                 <button>Start</button>
             </form>
             </div>
