@@ -51,6 +51,20 @@ Decided to make url the PRIMARY KEY for songs since it is the only piece of info
 
 An optimization I would make in the future is that since I am always going to have the three base difficulties I should make a Route that organizes everything in an array. I remember there is a way I can just get seperate rows of a condition but I may just go with having the host be able to customize their difficulty instead.
 
+Current feelings on my now working site:
+
+As a first react project where I wasn't given an idea beforehand, I am satisfied that it works but my code feels bloated. Some ideas in planning didn't end up being used and you can see that in some of the unused or uneccesary variables. Listing all the examples.
+
+1. useEffect in app.js is just not used. I will probably delete it but I just always thought I would need to GET the music at the beginning, however genres stops that in its tracks. Easy to remove, it'll happen at some point.
+
+2. context. Due to how I structured everything, context feels pretty unnecessary. Only Board uses context but superficially. I can probably replace it with a for loop using the number of questions or something. As of right now it is mapping song but not using it.
+
+3. Board.js's mapping. explained during #2
+
+4. Change my GET command? I didn't feel like playing around with psql to try and implent this especially since it isn't such a big deal but I know I can pretty easily just get all songs of a genre seperated by genre. Just wasn't sure what that would look like and how I could handle it. I was also pretty deep into tying the frontend and backend before I thought about it. If there was a big optimization it is that since it means I only need to call the API once instead of 4 times.
+
+These are the main things I'd want to fix, but aren't pressing. Just looks ugly and is maybe a split second slower.
+
 ## Current Goals
 
-Next step is to make sure the program can run and grab questions from the db. Once working correctly, I will refine Question.js as it is filled with placeholders.
+The base difficulties work, just need to make sure special works. Need to work on the CSS (especially for hiding the answers to the questions), will look into tailwind for this. Working on console errors will be my finishing touch, unique prop error, warining about updating a component, and loading in an icon (that should be fast).
