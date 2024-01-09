@@ -13,19 +13,19 @@ const Board =()=>{
     if(special.keys().length){
         return(
             <div>
-                {easy.map(song=><button onClick={()=>sendUser("easy",song.id)}>Easy</button>)}
-                {tough.map(song=><button onClick={()=>sendUser("tough",song.id)}>Tough</button>)}
-                {impossible.map(song=><button onClick={()=>sendUser("impossible",song.id)}>Impossible</button>)}
-                {special.map(song=><button onClick={()=>sendUser("special",song.id)}>Special</button>)}
+                {easy.map((song,idx)=><button onClick={()=>sendUser("easy",idx)}>Easy</button>)}
+                {tough.map((song,idx)=><button onClick={()=>sendUser("tough",idx)}>Tough</button>)}
+                {impossible.map((song,idx)=><button onClick={()=>sendUser("impossible",idx)}>Impossible</button>)}
+                {special.map((song,idx)=><button onClick={()=>sendUser("special",idx)}>Special</button>)}
             </div>
         )
     }
     else{
         return(
             <div>
-                {easy.map(song=><button onClick={()=>sendUser("easy",song.id)}>Easy</button>)}
-                {tough.map(song=><button onClick={()=>sendUser("tough",song.id)}>Tough</button>)}
-                {impossible.map(song=><button onClick={()=>sendUser("impossible",song.id)}>Impossible</button>)}
+                {easy.map((song,idx)=><button onClick={()=>sendUser("easy",idx)}>Easy</button>)}
+                {tough.map((song,idx)=><button onClick={()=>sendUser("tough",idx)}>Tough</button>)}
+                {impossible.map((song,idx)=><button onClick={()=>sendUser("impossible",idx)}>Impossible</button>)}
             </div>
         )
     }
