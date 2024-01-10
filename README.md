@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Starting Server
+
+node server.js
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -65,6 +69,10 @@ As a first react project where I wasn't given an idea beforehand, I am satisfied
 
 These are the main things I'd want to fix, but aren't pressing. Just looks ugly and is maybe a split second slower.
 
+Started and pretty much finished adding in CSS with tailwind.
+
+On "things I would add to this project" is I would like to have a way to make youtube videos visible. I have a way, which is to make youtube "invisible" instead of hidden but it makes the dom look ugly. Maybe if I put it on the bottom of the dom. The other thing is marking what questions you have clicked on. I honestly don't really know how to easily approach this. Best thought right now is have a state keep track of clicked on buttons in an array, then when clicked on change the class? I should try that, biggest thing that would make this project feel complete.
+
 ## Current Goals
 
-The base difficulties work, just need to make sure special works. Need to work on the CSS (especially for hiding the answers to the questions), will look into tailwind for this. Working on console errors will be my finishing touch, unique prop error, warining about updating a component, and loading in an icon (that should be fast).
+May do the last thing in my notes. Working on console errors will be my finishing touch, unique prop error, warining about updating a component, and loading in an icon (that should be fast).
