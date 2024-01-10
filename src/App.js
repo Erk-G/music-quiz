@@ -1,6 +1,5 @@
-import './App.css';
 import axios from "axios";
-import React, {useEffect,useState} from "react";
+import React, {useState} from "react";
 import { BrowserRouter,Routes,Route, Navigate } from 'react-router-dom';
 import questionContext from "./helper/questionContext";
 import Welcome from "./Welcome";
@@ -57,7 +56,7 @@ function App() {
   }
   return (
     <questionContext.Provider value={questionDict}>
-    <div className="App">
+    <div className="min-h-screen bg-blue-800 text-center">
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<Welcome getQuestions={getQuestions} setPlayerAmount={setPlayerAmount}/>}/>

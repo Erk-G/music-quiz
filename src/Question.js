@@ -6,6 +6,8 @@ import YouTube from "react-youtube";
 //I will need these to be a click to reveal. And then when finished it will turn the question grey and unlclickable
 //current solution is a bit jank
 const Question=({difficulty})=>{
+    const [nameVisibility,setNameVisibility]= useState("invisible");
+    const [originVisibility,setOriginVisibility]= useState("invisible");
     const navigate=useNavigate();
     const {id}=useParams();
     const newId=parseInt(id);
@@ -13,12 +15,17 @@ const Question=({difficulty})=>{
     const handleSubmit=()=>{
         navigate("/board");
     }
-    let target;
+    const changeVisibility=()=>{
+        setOriginVisibility("visible");
+        if(originVisibility==="visible"){
+            setNameVisibility("visible");
+        }
+    }
     // if(difficulty=="special"){
     //     target=""
     // }
     let opts;
-    if(question.difficulty=="easy"){
+    if(question.difficulty==="easy"){
         opts = {
             height: '30',
             width: '30',
@@ -30,8 +37,8 @@ const Question=({difficulty})=>{
     }
     else{
         opts = {
-            height: '30',
-            width: '30',
+            height: '400',
+            width: '400',
             playerVars:{
                 autoplay:1,
             },
@@ -39,18 +46,23 @@ const Question=({difficulty})=>{
     }
 
     return(
-        <div>
+        <div className="text-white">
             <div>
-                <h1>{target}</h1>
+                <h1 className="text-3xl font-bold underline">{question.player_targets}</h1>
             </div>
             <div>
-                <h1>{question.difficulty} Question # {id+1}</h1>
-                <YouTube videoId={question.url} opts={opts}/>
+                <h1 className="text-3xl font-bold underline">{question.difficulty} Question # {id+1}</h1>
+                <div className="hidden">
+                    <YouTube videoId={question.url} opts={opts}/>
+                </div>
+            <div className="grid grid-cols-2 gap-2">
                 <h2>Song Name: </h2>
-                <p>{question.song_title}</p>
+                <p className={nameVisibility}>{question.song_title}</p>
                 <h2>Song is from: </h2>
-                <p>{question.song_origin}</p>
-                <button onClick={handleSubmit}>Back to Board</button>
+                <p className={originVisibility}>{question.song_origin}</p>
+                <button onClick={changeVisibility} className="bg-indigo-700 hover:bg-indigo-900 font-bold py-2 px-2 rounded">Show Answer</button>
+            </div>
+                <button onClick={handleSubmit} className="bg-blue-700 hover:bg-blue-900 font-bold py-2 px-4 rounded">Back to Board</button>
             </div>
         </div>
     )
