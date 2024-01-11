@@ -73,6 +73,12 @@ Started and pretty much finished adding in CSS with tailwind.
 
 On "things I would add to this project" is I would like to have a way to make youtube videos visible. I have a way, which is to make youtube "invisible" instead of hidden but it makes the dom look ugly. Maybe if I put it on the bottom of the dom. The other thing is marking what questions you have clicked on. I honestly don't really know how to easily approach this. Best thought right now is have a state keep track of clicked on buttons in an array, then when clicked on change the class? I should try that, biggest thing that would make this project feel complete.
 
-## Current Goals
+Last note: I worked on this on a steam deck and never really figured out hoow to get postgreSQL databases locally on this thing so my testing was all done on an elephant postgreSQL server that I connected to because that works somehow.
 
-May do the last thing in my notes. Working on console errors will be my finishing touch, unique prop error, warining about updating a component, and loading in an icon (that should be fast).
+Seeding that database from my steam decks terminal also worked but after an update it broke so I seeded from the browser.
+
+## Bugs
+
+1. Tailwind breaks and lines the questions up all in one row. Don't know enough about tailwind to know why that happens.
+
+2. Youtube videos can be taken down and that leads to errors on questions. Not sure how I would even test this to remove it other than do a try and catch with the catch just booting you back to the question board.
