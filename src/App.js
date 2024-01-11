@@ -6,6 +6,7 @@ import Welcome from "./Welcome";
 import Question from './Question';
 import Board from './Board';
 import Players from "./Players";
+import Authentication from "./Authentication";
 
 //tempQuestions is our temp database. I don't think any logic will be here in the end
 //Keeping context an object incase I need context for other uses
@@ -60,11 +61,27 @@ function App() {
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<Welcome getQuestions={getQuestions} setPlayerAmount={setPlayerAmount}/>}/>
-        <Route path="/board" element={<Board/>}/>
-        <Route path="/question/easy/:id" element={<Question difficulty={questionDict.easy}/>}/>
-        <Route path="/question/tough/:id" element={<Question difficulty={questionDict.tough}/>}/>
-        <Route path="/question/impossible/:id" element={<Question difficulty={questionDict.impossible}/>}/>
-        <Route path="/question/special/:id" element={<Question difficulty={questionDict.special}/>}/>
+
+        <Route path="/board" element={<Authentication/>}>
+          <Route path="/board" element={<Board/>}/>
+        </Route>
+
+        <Route path="/question/easy/:id" element={<Authentication/>}>
+          <Route path="/question/easy/:id" element={<Question difficulty={questionDict.easy}/>}/>
+        </Route>
+
+        <Route path="/question/tough/:id" element={<Authentication/>}>
+          <Route path="/question/tough/:id" element={<Question difficulty={questionDict.tough}/>}/>
+        </Route>
+
+        <Route path="/question/impossible/:id" element={<Authentication/>}>
+          <Route path="/question/impossible/:id" element={<Question difficulty={questionDict.impossible}/>}/>
+        </Route>
+
+        <Route path="/question/special/:id" element={<Authentication/>}>
+          <Route path="/question/special/:id" element={<Question difficulty={questionDict.special}/>}/>
+        </Route>
+        
         <Route path="*" element={<Navigate to="/"/>}/>
       </Routes>
       <div className="grid grid-cols-3 grid-flow-col gap-2 py-10">

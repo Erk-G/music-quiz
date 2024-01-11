@@ -11,6 +11,10 @@ const Board =()=>{
     const clickedbtnClass="bg-red-700 hover:bg-red-900 text-yellow-400 font-bold py-2 px-4 rounded";
     const boardClass="grid grid-rows-"+easy.length.toString()+" grid-flow-col-dense gap-2 py-10";
 
+    // const boardClass2="grid grid-rows-3 grid-flow-col-dense gap-2 py-10";
+    // console.log(boardClass===boardClass2);
+    // console.log(boardClass);
+
     const sendUser=(difficulty,id)=>{
         // console.log("hello ," , difficulty,id);
         let newChosenQuestions=[...chosenQuestions];
@@ -24,7 +28,6 @@ const Board =()=>{
 
     const produceButton=(song,idx)=>{
         if(chosenQuestions.includes(idx)){
-            console.log("yes");
             return(
             <button id={idx} onClick={()=>sendUser(song.difficulty,idx)} className={clickedbtnClass} disabled>{song.difficulty}</button>
             )
