@@ -5,7 +5,6 @@ import {useNavigate} from "react-router-dom";
 import questionContext from "./helper/questionContext";
 const Board =()=>{
     const {easy,tough,impossible,special}=useContext(questionContext);
-    const [chosenQuestions,setChosenQuestions]=useState([]);
     const navigate=useNavigate();
     const btnClass="bg-blue-700 hover:bg-blue-900 text-yellow-400 font-bold py-2 px-4 rounded";
     const clickedbtnClass="bg-red-700 hover:bg-red-900 text-yellow-400 font-bold py-2 px-4 rounded";
@@ -15,26 +14,31 @@ const Board =()=>{
     // console.log(boardClass===boardClass2);
     // console.log(boardClass);
 
-    const sendUser=(difficulty,id)=>{
+    const sendUser=(url,difficulty,id)=>{
         // console.log("hello ," , difficulty,id);
-        let newChosenQuestions=[...chosenQuestions];
-        newChosenQuestions.push(id);
-        // console.log(newChosenQuestions);
-        setChosenQuestions(newChosenQuestions);
+        if(!localStorage.getItem("clickedQuestions")){
+            localStorage.setItem("clickedQuestions",JSON.stringify([url]));
+        }
+        else{
+            let newChosenQuestions=JSON.parse(localStorage.getItem("clickedQuestions"));
+            newChosenQuestions.push(url);
+            // console.log(newChosenQuestions);
+            localStorage.setItem("clickedQuestions",JSON.stringify(newChosenQuestions));
+        }
         // console.log(id);
         // console.log(chosenQuestions);
         navigate(`/question/${difficulty}/${id}`)
     };
 
     const produceButton=(song,idx)=>{
-        if(chosenQuestions.includes(idx)){
+        if(JSON.parse(localStorage.getItem("clickedQuestions")).includes(song.url)){
             return(
-            <button id={idx} onClick={()=>sendUser(song.difficulty,idx)} className={clickedbtnClass} disabled>{song.difficulty}</button>
+            <button id={song.url} onClick={()=>sendUser(song.url,song.difficulty,idx)} className={clickedbtnClass} disabled>{song.difficulty}</button>
             )
         }
         else{
             return(
-                <button id={idx} onClick={()=>sendUser(song.difficulty,idx)} className={btnClass} >{song.difficulty}</button>
+                <button id={song.url} onClick={()=>sendUser(song.url,song.difficulty,idx)} className={btnClass} >{song.difficulty}</button>
             )
         }
     };

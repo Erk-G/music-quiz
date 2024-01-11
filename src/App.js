@@ -13,6 +13,7 @@ import Authentication from "./Authentication";
 function App() {
   const [questionDict,setQuestionDict]=useState({});
   const [playerList,setPlayerList]=useState([]);
+  localStorage.clear();
   //num is always 3,4,or 5. maxVal is length of shortest array
   const uniqueQuestions=(num,arr)=>{
     let numbers=[];
