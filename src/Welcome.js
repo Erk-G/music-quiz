@@ -12,7 +12,7 @@ const Welcome=({getQuestions,setPlayerAmount})=>{
     const handleSubmission=async (e)=>{
         e.preventDefault();
         const data=e.target
-        // let result= await getQuestions(data.genre.value,data.question_amount.value,data.special.value);
+        let result= await getQuestions(data.genre.value,data.question_amount.value,data.special.value);
         setPlayerAmount(data.player_amount.value);
         setHostReady(true);
     }

@@ -11,7 +11,7 @@ const Board =()=>{
         // console.log("hello ," , difficulty,id);
         navigate(`/question/${difficulty}/${id}`)
     }
-    if(special[0]){
+    if(special){
         return(
             <div className="grid grid-rows-3 grid-flow-col gap-2 py-10">
                 {easy.map((song,idx)=><button id={idx} onClick={()=>sendUser("easy",idx)} className={btnClass} >Easy</button>)}
@@ -23,7 +23,7 @@ const Board =()=>{
     }
     else{
         return(
-            <div className="grid grid-cols-3 gap-2 py-10">
+            <div className="grid grid-rows-3 grid-flow-col gap-2 py-10">
                 {easy.map((song,idx)=><button id={idx} onClick={()=>sendUser("easy",idx)}className={btnClass} >Easy</button>)}
                 {tough.map((song,idx)=><button id={idx} onClick={()=>sendUser("tough",idx)}className={btnClass} >Tough</button>)}
                 {impossible.map((song,idx)=><button id={idx} onClick={()=>sendUser("impossible",idx)}className={btnClass} >Impossible</button>)}

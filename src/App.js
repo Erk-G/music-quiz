@@ -36,7 +36,7 @@ function App() {
     tough=uniqueQuestions(num_questions,tough.data.songs);
     impossible=uniqueQuestions(num_questions,impossible.data.songs);
     let newQuestions;
-    if(special){
+    if(special!="false"){
       let special= await axios.get(base_url+"/special");
       special=uniqueQuestions(num_questions,special.data.songs);
       newQuestions={easy:easy,tough:tough,impossible:impossible,special:special};
