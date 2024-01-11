@@ -50,7 +50,7 @@ function App() {
   const setPlayerAmount=(num)=>{
     let newPlayerList=[];
     for(let i=0;i<num;i++){
-      newPlayerList.push(<Players number={i}/>)
+      newPlayerList.push(<Players number={i+1}/>)
     }
     setPlayerList(newPlayerList);
   }
@@ -67,7 +67,9 @@ function App() {
         <Route path="/question/special/:id" element={<Question difficulty={questionDict.special}/>}/>
         <Route path="*" element={<Navigate to="/"/>}/>
       </Routes>
+      <div className="grid grid-cols-3 grid-flow-col gap-2 py-10">
       {playerList}
+      </div>
       </BrowserRouter>
     </div>
     </questionContext.Provider>

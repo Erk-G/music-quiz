@@ -1,32 +1,56 @@
 //A page with an amount of buttons on them pairing with the categories. Clicking on one will bring up a question of that category.
 // This is closer to what the end result of Board will be. It will go through one more revision once a db is set up
-import React, {useContext} from "react";
+import React, {useContext,useState} from "react";
 import {useNavigate} from "react-router-dom";
 import questionContext from "./helper/questionContext";
 const Board =()=>{
-    const btnClass="bg-blue-700 hover:bg-blue-900 text-yellow-400 font-bold py-2 px-4 rounded";
-    const navigate=useNavigate();
     const {easy,tough,impossible,special}=useContext(questionContext);
+    const [chosenQuestions,setChosenQuestions]=useState([]);
+    const navigate=useNavigate();
+    const btnClass="bg-blue-700 hover:bg-blue-900 text-yellow-400 font-bold py-2 px-4 rounded";
+    const clickedbtnClass="bg-red-700 hover:bg-red-900 text-yellow-400 font-bold py-2 px-4 rounded";
+    const boardClass="grid grid-rows-"+easy.length.toString()+" grid-flow-col-dense gap-2 py-10";
+
     const sendUser=(difficulty,id)=>{
         // console.log("hello ," , difficulty,id);
+        let newChosenQuestions=[...chosenQuestions];
+        newChosenQuestions.push(id);
+        // console.log(newChosenQuestions);
+        setChosenQuestions(newChosenQuestions);
+        // console.log(id);
+        // console.log(chosenQuestions);
         navigate(`/question/${difficulty}/${id}`)
-    }
+    };
+
+    const produceButton=(song,idx)=>{
+        if(chosenQuestions.includes(idx)){
+            console.log("yes");
+            return(
+            <button id={idx} onClick={()=>sendUser(song.difficulty,idx)} className={clickedbtnClass} disabled>{song.difficulty}</button>
+            )
+        }
+        else{
+            return(
+                <button id={idx} onClick={()=>sendUser(song.difficulty,idx)} className={btnClass} >{song.difficulty}</button>
+            )
+        }
+    };
     if(special){
         return(
-            <div className="grid grid-rows-3 grid-flow-col gap-2 py-10">
-                {easy.map((song,idx)=><button id={idx} onClick={()=>sendUser("easy",idx)} className={btnClass} >Easy</button>)}
-                {tough.map((song,idx)=><button id={idx} onClick={()=>sendUser("tough",idx)} className={btnClass} >Tough</button>)}
-                {impossible.map((song,idx)=><button id={idx} onClick={()=>sendUser("impossible",idx)}className={btnClass} >Impossible</button>)}
-                {special.map((song,idx)=><button id={idx} onClick={()=>sendUser("special",idx)}className={btnClass} >Special</button>)}
+            <div className={boardClass}>
+                {easy.map((song,idx)=>produceButton(song,idx))}
+                {tough.map((song,idx)=>produceButton(song,idx))}
+                {impossible.map((song,idx)=>produceButton(song,idx))}
+                {special.map((song,idx)=>produceButton(song,idx))}
             </div>
         )
     }
     else{
         return(
-            <div className="grid grid-rows-3 grid-flow-col gap-2 py-10">
-                {easy.map((song,idx)=><button id={idx} onClick={()=>sendUser("easy",idx)}className={btnClass} >Easy</button>)}
-                {tough.map((song,idx)=><button id={idx} onClick={()=>sendUser("tough",idx)}className={btnClass} >Tough</button>)}
-                {impossible.map((song,idx)=><button id={idx} onClick={()=>sendUser("impossible",idx)}className={btnClass} >Impossible</button>)}
+            <div className={boardClass}>
+                {easy.map((song,idx)=>produceButton(song,idx))}
+                {tough.map((song,idx)=>produceButton(song,idx))}
+                {impossible.map((song,idx)=>produceButton(song,idx))}
             </div>
         )
     }
