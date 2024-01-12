@@ -31,7 +31,7 @@ const Board =()=>{
     };
 
     const produceButton=(song,idx)=>{
-        if(JSON.parse(localStorage.getItem("clickedQuestions")).includes(song.url)){
+        if(localStorage.getItem("clickedQuestions") && JSON.parse(localStorage.getItem("clickedQuestions")).includes(song.url)){
             return(
             <button id={song.url} onClick={()=>sendUser(song.url,song.difficulty,idx)} className={clickedbtnClass} disabled>{song.difficulty}</button>
             )
