@@ -3,12 +3,13 @@ import "./Question.css";
 import { useParams, useNavigate } from "react-router-dom";
 import YouTube from "react-youtube";
 //The will load the question in. An embedded youtube video where you cannot see anything visual, the category on top and buttons on the bottom to add or subtract points.
-//I will need these to be a click to reveal. And then when finished it will turn the question grey and unlclickable
-//current solution is a bit jank
+// difficulty is the array of questions from that difficulty ex. all easy questions
 const Question=({difficulty})=>{
+    //Name and origin Visiblity control if the answer to the question is visible on the user's end
     const [nameVisibility,setNameVisibility]= useState("invisible");
     const [originVisibility,setOriginVisibility]= useState("invisible");
     const navigate=useNavigate();
+    //id is the index of the question in the difficulty array
     const {id}=useParams();
     const newId=parseInt(id);
     const question=difficulty[newId];
@@ -21,9 +22,7 @@ const Question=({difficulty})=>{
             setNameVisibility("visible");
         }
     }
-    // if(difficulty=="special"){
-    //     target=""
-    // }
+    //To keep things interesting, easy mode questions will only play the first six seconds
     let opts;
     if(question.difficulty==="easy"){
         opts = {

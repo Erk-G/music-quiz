@@ -1,4 +1,5 @@
 import {useState} from "react";
+//Players will just be a square and the host will add or subtract from their score.
 const Players=({number})=>{
     const [score,setScore]=useState(0);
     const addScore=()=>{

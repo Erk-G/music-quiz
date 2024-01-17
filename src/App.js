@@ -8,12 +8,14 @@ import Board from './Board';
 import Players from "./Players";
 import Authentication from "./Authentication";
 
-//tempQuestions is our temp database. I don't think any logic will be here in the end
-//Keeping context an object incase I need context for other uses
 function App() {
+  //questionDict holds all quiz questions, format {easy:[QuestionObject1...],tough:...}
   const [questionDict,setQuestionDict]=useState({});
+  //Holds player components
   const [playerList,setPlayerList]=useState([]);
+  //localStorage is used to keep track of questions clicked on, so clearing it on website reload
   localStorage.clear();
+  //uniqueQuestions takes a num: number of questions needed and arr: array of song questions
   //num is always 3,4,or 5. maxVal is length of shortest array
   const uniqueQuestions=(num,arr)=>{
     let numbers=[];
@@ -29,6 +31,7 @@ function App() {
     }
     return newQuestions;
   }
+  //getQuestions calls the backend to get number of questions from a specific genre with special difficulty being optional. Puts it into QuestionDict
   const getQuestions=async (genre,num_questions,special)=>{
     const base_url=`http://localhost:3001/songs/${genre}`;
     let easy= await axios.get(base_url+"/easy");
@@ -49,6 +52,7 @@ function App() {
     setQuestionDict(newQuestions);
 
   }
+  //Puts num players into PlayerList
   const setPlayerAmount=(num)=>{
     let newPlayerList=[];
     for(let i=0;i<num;i++){

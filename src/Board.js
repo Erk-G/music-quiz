@@ -1,19 +1,17 @@
 //A page with an amount of buttons on them pairing with the categories. Clicking on one will bring up a question of that category.
-// This is closer to what the end result of Board will be. It will go through one more revision once a db is set up
 import React, {useContext,useState} from "react";
 import {useNavigate} from "react-router-dom";
 import questionContext from "./helper/questionContext";
 const Board =()=>{
+    //grabbing all question arrays from context
     const {easy,tough,impossible,special}=useContext(questionContext);
     const navigate=useNavigate();
+    //tailwind CSSs that will be used more than once are set up here to make things look neater
     const btnClass="bg-blue-700 hover:bg-blue-900 text-yellow-400 font-bold py-2 px-4 rounded";
     const clickedbtnClass="bg-red-700 hover:bg-red-900 text-yellow-400 font-bold py-2 px-4 rounded";
     const boardClass="grid grid-rows-"+easy.length.toString()+" grid-flow-col-dense gap-2 py-10";
 
-    // const boardClass2="grid grid-rows-3 grid-flow-col-dense gap-2 py-10";
-    // console.log(boardClass===boardClass2);
-    // console.log(boardClass);
-
+    //When a question is clicked, keep track of it in local storage and redirect user to the questions page
     const sendUser=(url,difficulty,id)=>{
         // console.log("hello ," , difficulty,id);
         if(!localStorage.getItem("clickedQuestions")){
@@ -30,6 +28,7 @@ const Board =()=>{
         navigate(`/question/${difficulty}/${id}`)
     };
 
+    //checks localstorage for the url. If in localStorage then the button is unlickable and red
     const produceButton=(song,idx)=>{
         if(localStorage.getItem("clickedQuestions") && JSON.parse(localStorage.getItem("clickedQuestions")).includes(song.url)){
             return(

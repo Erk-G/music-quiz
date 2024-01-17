@@ -1,12 +1,15 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
-//Preliminary logic will be here. Like type  of quiz and grabbing questions
-//The button will eventually turn in form data
+//Preliminary logic will be here. Setting questions and players based on input.
+//Form is made up of radio buttons. Just easier to prevent errors with set answers.
+//Will need to change genre input with more genres. Maybe make it a drop down boxs
 const Welcome=({getQuestions,setPlayerAmount})=>{
     // const tempQuestions={easy:[{id:"0",url:"M7lc1UVf-VE",SongName:"Snactuary"}] ,
     // tough:[{id:"0",url:"HTUq3Ik1GHM",SongName:"Snactuary"}] ,
     // impossible:[{id:"0",url:"2g811Eo7K8U",SongName:"Snactuary"}] ,
     // special:[{id:"0",url:"HTUq3Ik1GHM",SongName:"Snactuary",target:"Player 1"}] };
+
+    //When form is submitted host is ready and redirects to board.
     const [hostReady,setHostReady]=useState(false);
     const navigate=useNavigate()
     const handleSubmission=async (e)=>{
