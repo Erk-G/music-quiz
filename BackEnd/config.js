@@ -23,10 +23,8 @@ const PORT = +process.env.PORT || 3001;
 
 function getDatabaseUri() {
   return (process.env.NODE_ENV === "test")
-      ? "postgres://ncqfimmj:HslnYUpzmqRxyCLer2IMYhdvNQZJo7n5@berry.db.elephantsql.com/ncqfimmj"
-      // ? "music_test"
-      //: process.env.DATABASE_URL || "music";
-      : process.env.DATABASE_URL || "postgres://ncqfimmj:HslnYUpzmqRxyCLer2IMYhdvNQZJo7n5@berry.db.elephantsql.com/ncqfimmj";
+      ? "music_test"
+      : process.env.DATABASE_URL || "music";
 }
 
 module.exports = {
